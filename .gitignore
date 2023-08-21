@@ -30,3 +30,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+infra/main.parameters.json
+infra/main.parameters.json.old

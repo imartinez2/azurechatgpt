@@ -1,39 +1,51 @@
+@description('Name of the the environment which is used to generate a short unique hash used in all resources.')
 @minLength(1)
 @maxLength(64)
-@description('Name of the the environment which is used to generate a short unique hash used in all resources.')
 param name string
 
+@description('Optional. The location to which the resources are deployed.')
+param location string = resourceGroup().location
+
+@description('Azure OpenAI API Key')
 @minLength(1)
 @maxLength(64)
-@description('Azure OpenAI API Key')
 param openaiApiKey string
 
+@description('Azure OpenAI Instance Name e.g. my-openai-instance')
 @minLength(1)
 @maxLength(64)
-@description('Azure OpenAI Instance Name e.g. my-openai-instance')
 param openaiInstanceName string
 
+@description('Azure OpenAI Deployment Name e.g. gpt3-turbo')
 @minLength(1)
 @maxLength(64)
-@description('Azure OpenAI Deployment Name e.g. gpt3-turbo')
 param openaiDeploymentName string
 
+@description('Azure OpenAI API Version e.g. 2021-08-04-preview')
 @minLength(1)
 @maxLength(64)
-@description('Azure OpenAI API Version e.g. 2021-08-04-preview')
 param openaiApiVersion string
 
-var resourceToken = toLower(uniqueString(subscription().id, name, resourceGroup().location))
+param azureAdTenantId string
 
+@secure()
+param azureAdClientSecret string
 
-module resources 'resources.bicep' = {
+param azureAdClientId string
+
+var resourceToken = toLower(uniqueString(subscription().id, name, location))
+
+module nested_resources './resources.bicep' = {
   name: 'resources-${resourceToken}'
   params: {
     name: name
-    resourceToken: resourceToken
-    openai_api_key: openaiApiKey
-    openai_instance_name: openaiInstanceName
-    openai_deployment_name: openaiDeploymentName
-    openai_api_version: openaiApiVersion
+    location: location
+    openaiApiKey: openaiApiKey
+    openaiName: openaiInstanceName
+    openaiDeploymentName: openaiDeploymentName
+    openaiApiVersion: openaiApiVersion
+    azureAdTenantId: azureAdTenantId
+    azureAdClientSecret: azureAdClientSecret
+    azureAdClientId: azureAdClientId
   }
 }
