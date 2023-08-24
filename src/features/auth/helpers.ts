@@ -13,8 +13,10 @@ export const userSession = async (): Promise<UserModel | null> => {
 
 export const userHashedId = async (): Promise<string> => {
   const user = await userSession();
-  if (user) {
+  if (user?.email) {
     return hashValue(user.email);
+  } else if (user?.name) {
+    return hashValue(user.name);
   }
 
   throw new Error("User not found");

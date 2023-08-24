@@ -59,7 +59,7 @@ const ChatInput: FC<Props> = (props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="absolute bottom-0 w-full flex items-center"
+      className="lg:absolute bottom-0 w-full flex items-center"
     >
       <div className="container mx-auto max-w-4xl relative py-2 flex gap-2 items-end">
         <Textarea

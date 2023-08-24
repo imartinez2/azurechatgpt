@@ -19,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="h-full overflow-hidden">
+    <html lang="en" className="h-full lg:overflow-hidden">
       <body
         className={cn(inter.className, "flex w-full h-full bg-page-background")}
       >
@@ -28,7 +28,7 @@ export default function RootLayout({
             <div
               className={cn(
                 inter.className,
-                "flex w-full p-2 h-full gap-2 bg-page-background"
+                "flex flex-col md:flex-row w-full p-2 h-full gap-2 bg-page-background"
               )}
             >
               {children}

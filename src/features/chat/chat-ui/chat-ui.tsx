@@ -127,7 +127,7 @@ export const ChatUI: FC<Prop> = (props) => {
           <ChatRow
             name={message.role === "user" ? session?.user?.name! : AI_NAME}
             profilePicture={
-              message.role === "user" ? session?.user?.image! : "/ai-icon.png"
+              message.role === "user" ? session?.user?.image! : "/ai-avatar.417.png"
             }
             message={message.content}
             type={message.role}
@@ -140,7 +140,7 @@ export const ChatUI: FC<Prop> = (props) => {
   );
 
   return (
-    <Card className="h-full relative overflow-hidden">
+    <Card className="h-full relative lg:overflow-hidden">
       {messages.length !== 0 ? (
         ChatWindow
       ) : (
