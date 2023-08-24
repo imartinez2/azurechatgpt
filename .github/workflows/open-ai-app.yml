@@ -38,6 +38,9 @@ jobs:
       - name: 📂 Copy Public folder
         run: cp -R ./src/public ./site-deploy/public
 
+      - name: 📂 Copy App Insights script
+        run: cp -R ./src/appInsights.js ./site-deploy/appInsights.js
+
       - name: 📦 Package Next application
         run: |
           cd ./site-deploy

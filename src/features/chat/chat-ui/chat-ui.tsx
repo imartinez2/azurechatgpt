@@ -114,15 +114,15 @@ export const ChatUI: FC<Prop> = (props) => {
   };
 
   const ChatWindow = (
-    <div className=" h-full rounded-md overflow-y-auto" ref={scrollRef}>
-      <div className="flex justify-center p-4">
+    <div className="h-full rounded-md overflow-y-auto" ref={scrollRef}>
+      <div className="flex justify-end p-4">
         <ChatHeader
           chatType={chatBody.chatType}
           conversationStyle={chatBody.conversationStyle}
           llmModel={chatBody.model}
         />
       </div>
-      <div className=" pb-[80px] ">
+      <div className="pb-[80px]">
         {messages.map((message, index) => (
           <ChatRow
             name={message.role === "user" ? session?.user?.name! : AI_NAME}

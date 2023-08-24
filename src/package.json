@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node --require ./appInsights.js node_modules/next/dist/bin/next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node --require ./appInsights.js node_modules/next/dist/bin/next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "@types/react": "^18.2.18",
     "@types/react-dom": "^18.2.7",
     "ai": "^2.1.32",
+    "applicationinsights": "^2.7.3",
     "autoprefixer": "^10.4.14",
     "class-variance-authority": "^0.6.1",
     "clsx": "^2.0.0",

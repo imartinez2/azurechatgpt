@@ -1,5 +1,5 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { BarChartHorizontalBig } from "lucide-react";
+// import { BarChartHorizontalBig } from "lucide-react";
 import Link from "next/link";
 import { UserProfile } from "../user-profile";
 
@@ -13,7 +13,7 @@ export const MainMenu = () => {
           title="Home"
         >
           <Avatar className="">
-            <AvatarImage src="/ai-avatar.417.png" />
+            <AvatarImage src="/ncx-icon.png" />
           </Avatar>
         </Link>
         {/* TODO: Re-add feature later

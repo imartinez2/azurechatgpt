@@ -12,14 +12,13 @@ interface Prop {
 
 export const ChatHeader: FC<Prop> = (props) => {
   return (
-    <div className="flex gap-2">
-      <ChatTypeSelector disable={true} chatType={props.chatType} />
+    <div className="flex gap-2 flex-col min-[1150px]:flex-row">
       <ChatModelSelector disable={true} llmModel={props.llmModel} />
-
       <ChatStyleSelector
         disable={true}
         conversationStyle={props.conversationStyle}
       />
+      <ChatTypeSelector disable={true} chatType={props.chatType} />
     </div>
   );
 };
