@@ -17,21 +17,12 @@ jobs:
       - name: 🌱 Checkout to the branch
         uses: actions/checkout@v3
 
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.npm
-            ${{ github.workspace }}/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-          restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-
       - name: 🍏 Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
-          # cache: "npm"
-          # cache-dependency-path: "./src/package-lock.json"
+          cache: "npm"
+          cache-dependency-path: "./src/package-lock.json"
 
       - name: ⚙️ npm install and build
         run: |
@@ -56,12 +47,6 @@ jobs:
         run: |
           cd ./site-deploy
           zip Nextjs-site.zip ./* .next -qr
-
-      - name: 🔍 Diagnostics
-        run: |
-          ls ./src
-          ls ./src/.next
-          ls ./site-deploy
 
       - name: ⬆️ Publish Next Application artifact
         uses: actions/upload-artifact@v3
