@@ -4,8 +4,14 @@ import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { CreateChatThread } from "../chat-services/chat-thread-service";
+import { FC } from "react";
+import { cn } from "@/lib/utils";
 
-export const NewChat = () => {
+interface Prop {
+  className?: string;
+}
+
+export const NewChat: FC<Prop> = (props) => {
   const router = useRouter();
   const startNewChat = async () => {
     try {
@@ -21,10 +27,11 @@ export const NewChat = () => {
 
   return (
     <Button
-      className="gap-2"
+      className = {cn("gap-2", props.className)}
       variant={"outline"}
       size={"sm"}
       onClick={() => startNewChat()}
+      {...props}
     >
       <PlusCircle size={16} /> New chat
     </Button>

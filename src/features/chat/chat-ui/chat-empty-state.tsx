@@ -38,7 +38,7 @@ export const EmptyState: FC<Prop> = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-5 w-full items-center container mx-auto max-w-3xl justify-center h-5/6 md:h-full gap-9 auto-rows-min lg:auto-rows-auto pt-4">
+    <div className="grid grid-cols-5 w-full items-center container mx-auto max-w-3xl justify-center h-5/6 md:h-full gap-9 auto-rows-min lg:auto-rows-auto p-4">
       <div className="col-span-5 lg:col-span-2 gap-5 flex flex-col lg:flex-1">
         <Typography variant="h4" className="text-primary">
           Hello!

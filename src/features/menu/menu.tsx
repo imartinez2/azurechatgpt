@@ -1,5 +1,5 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-// import { BarChartHorizontalBig } from "lucide-react";
+import { BarChartHorizontalBig, BookMarked } from "lucide-react";
 import Link from "next/link";
 import { UserProfile } from "../user-profile";
 
@@ -16,6 +16,15 @@ export const MainMenu = () => {
             <AvatarImage src="/ncx-icon.png" />
           </Avatar>
         </Link>
+
+        <Link
+          href="/about"
+          className="w-10 h-10 items-center justify-center flex"
+          title="About"
+        >
+          <BookMarked size={24} />
+        </Link>
+
         {/* TODO: Re-add feature later
         <Link
           href="/reporting"
