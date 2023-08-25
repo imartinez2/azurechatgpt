@@ -9,6 +9,9 @@ on:
   # Allow manual workflow trigger
   workflow_dispatch:
 
+env:
+  SLOT_NAME: staging
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -54,11 +57,13 @@ jobs:
           name: Nextjs-site
           path: ./site-deploy/Nextjs-site.zip
 
-  deploy:
+  deploy-to-stage:
+    name: Deploy to Staging
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: "Production"
+      name: "Staging"
+      url: ${{ steps.deploy-to-stage.outputs.webapp-url }}
 
     steps:
       - name: ⬇️ Download artifact from build job
@@ -72,11 +77,29 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: 🚀 Deploy to Azure Web App
-        id: deploy-to-webapp
+        id: deploy-to-stage
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_APP_SERVICE_NAME }}
           package: ${{ github.workspace }}/Nextjs-site.zip
+          slot-name: ${{ env.SLOT_NAME }}
 
       - name: 🧹 Cleanup
         run: rm ${{ github.workspace }}/Nextjs-site.zip
+
+  release-to-prod:
+    name: Release to prod
+    needs: deploy-to-stage
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Production'
+      url: 'https://${{ secrets.AZURE_APP_SERVICE_NAME }}.azurewebsites.net/'
+
+    steps:
+    - name: Log into Azure CLI with service principal
+      uses: azure/login@v1.1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Swap slots
+      run: az webapp deployment slot swap -s staging -n ${{ env.WEBAPP_NAME }} -g ${{ env.RESOURCE_GROUP }}
