@@ -16,7 +16,7 @@ if (process.env.APPLICATIONINSIGHTS_CONNECTION_STRING !== undefined) {
       .setAutoDependencyCorrelation(true)
       .setDistributedTracingMode(appInsights.DistributedTracingModes.AI_AND_W3C)
       .setSendLiveMetrics(true)
-      .setUseDiskRetryCaching(true)
+      // .setUseDiskRetryCaching(true)
       .enableWebInstrumentation(true);
 
     appInsights.start();
