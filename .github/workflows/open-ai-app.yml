@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: "18.x"
+          cache: "npm"
+          cache-dependency-path: "./src/package-lock.json"
 
       - name: ⚙️ npm install and build
         run: |
