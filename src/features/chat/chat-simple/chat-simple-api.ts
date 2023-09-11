@@ -32,7 +32,7 @@ export const ChatSimple = async (props: PromptGPTProps) => {
   });
 
   const memory = new BufferWindowMemory({
-    k: 100,
+    k: 10,
     returnMessages: true,
     memoryKey: "history",
     chatHistory: new CosmosDBChatMessageHistory({
