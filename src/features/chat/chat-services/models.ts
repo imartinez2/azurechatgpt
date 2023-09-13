@@ -18,7 +18,11 @@ export interface ChatMessageModel {
 
 export type ConversationStyle = "creative" | "balanced" | "precise";
 export type ChatType = "simple" | "data" | "mssql";
-export type LLMModel = "gpt-3.5" | "gpt-4";
+
+export const GPT_3_5 = "gpt-3.5" as const;
+export const GPT_4 = "gpt-4" as const;
+
+export type LLMModel = typeof GPT_3_5 | typeof GPT_4;
 
 export type ChatRole = "system" | "user" | "assistant" | "function";
 

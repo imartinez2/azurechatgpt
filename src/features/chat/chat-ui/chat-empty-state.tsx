@@ -8,6 +8,7 @@ import { ChatType, ConversationStyle, LLMModel } from "../chat-services/models";
 import { ChatModelSelector } from "./chat-model-selector";
 import { ChatStyleSelector } from "./chat-style-selector";
 import { ChatTypeSelector } from "./chat-type-selector";
+import { AI_NAME } from "@/features/theme/customise";
 interface Prop {
   isUploadingFile: boolean;
   llmModel: LLMModel;
@@ -44,8 +45,11 @@ export const EmptyState: FC<Prop> = (props) => {
           Hello!
         </Typography>
         <p className="">
-          Start by just typing your message in the box below. You can also
+          Welcome to {AI_NAME} - the friendly chatbot from Creative IT! Start by just typing your message in the box below. You can also
           personalise the chat by making changes to the settings on the right.
+        </p>
+        <p className="">
+          {AI_NAME} users are requried to read and accept Creative's AI Guidance. <a href="https://creativedc.sharepoint.com/:w:/r/sites/OPO/_layouts/15/Doc.aspx?sourcedoc=%7B8DDE5637-5740-4A65-B55C-2D7E47CC438F%7D&file=Updated%20Draft%20Guidance_Generative%20AI%20Use%20at%20Creative.docx&action=default&mobileredirect=true" target="_blank">Click here</a> to access the guidance.
         </p>
       </div>
       <Card className="col-span-3 flex flex-col gap-5 p-5 ">

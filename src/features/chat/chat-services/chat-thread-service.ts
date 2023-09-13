@@ -14,6 +14,8 @@ import {
   ConversationStyle,
   LLMModel,
   PromptGPTProps,
+  GPT_3_5,
+  GPT_4
 } from "./models";
 
 export const FindAllChatThreadForCurrentUser = async () => {
@@ -161,8 +163,8 @@ export const CreateChatThread = async () => {
     createdAt: new Date(),
     isDeleted: false,
     chatType: "simple",
-    model: "gpt-3.5",
-    conversationStyle: "precise",
+    model: GPT_3_5,
+    conversationStyle: "balanced",
     type: CHAT_THREAD_ATTRIBUTE,
   };
 
