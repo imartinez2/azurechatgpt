@@ -10,9 +10,18 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { useEffect } from "react";
+// other imports...
 
 export const LogIn = () => {
-  return (
+  useEffect(() => {
+    signIn("azure-ad");
+  }, []);
+
+  return null;
+};
+/*export const LogIn = () => {
+   return (
     <Card className="flex gap-2 flex-col min-w-[300px]">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl flex gap-2">
@@ -31,4 +40,4 @@ export const LogIn = () => {
       </CardContent>
     </Card>
   );
-};
+}; */
