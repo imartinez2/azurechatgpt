@@ -49,7 +49,7 @@ export const EmptyState: FC<Prop> = (props) => {
           personalise the chat by making changes to the settings on the right.
         </p>
         <p className="">
-          {AI_NAME} users are requried to read and accept Creative's AI Guidance. <a href="https://creativedc.sharepoint.com/:w:/r/sites/OPO/_layouts/15/Doc.aspx?sourcedoc=%7B8DDE5637-5740-4A65-B55C-2D7E47CC438F%7D&file=Updated%20Draft%20Guidance_Generative%20AI%20Use%20at%20Creative.docx&action=default&mobileredirect=true" target="_blank">Click here</a> to access the guidance.
+          {AI_NAME} users are requried to read and accept Creative's AI Guidance. <a className="text-link hover:text-link-hover" href="https://creativedc.sharepoint.com/:w:/r/sites/OPO/_layouts/15/Doc.aspx?sourcedoc=%7B8DDE5637-5740-4A65-B55C-2D7E47CC438F%7D&file=Updated%20Draft%20Guidance_Generative%20AI%20Use%20at%20Creative.docx&action=default&mobileredirect=true" target="_blank">Click here</a> to access the guidance.
         </p>
       </div>
       <Card className="col-span-3 flex flex-col gap-5 p-5 ">
