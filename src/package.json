@@ -28,7 +28,7 @@
     "clsx": "^2.0.0",
     "eslint": "^8.46.0",
     "eslint-config-next": "^13.4.12",
-    "langchain": "^0.0.123",
+    "langchain": "^0.0.150",
     "lucide-react": "^0.264.0",
     "nanoid": "^4.0.2",
     "next": "^13.4.12",
