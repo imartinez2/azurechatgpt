@@ -46,7 +46,7 @@ export const EmptyState: FC<Prop> = (props) => {
         </Typography>
         <p className="">
           Welcome to {AI_NAME} - the friendly chatbot from Creative IT! Start by just typing your message in the box below. You can also
-          personalise the chat by making changes to the settings on the right.
+          personalize the chat by making changes to the settings on the right.
         </p>
         <p className="">
           {AI_NAME} users are requried to read and accept Creative's AI Guidance. <a className="text-link hover:text-link-hover" href="https://creativedc.sharepoint.com/:w:/r/sites/OPO/_layouts/15/Doc.aspx?sourcedoc=%7B8DDE5637-5740-4A65-B55C-2D7E47CC438F%7D&file=Updated%20Draft%20Guidance_Generative%20AI%20Use%20at%20Creative.docx&action=default&mobileredirect=true" target="_blank">Click here</a> to access the guidance.
@@ -54,7 +54,7 @@ export const EmptyState: FC<Prop> = (props) => {
       </div>
       <Card className="col-span-3 flex flex-col gap-5 p-5 ">
         <Typography variant="h4" className="text-primary">
-          Personalise
+          Personalize
         </Typography>
         <div className="flex flex-col gap-2">
           <p className="text-sm ">Select the Azure OpenAI model</p>

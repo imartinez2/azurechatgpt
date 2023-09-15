@@ -24,7 +24,7 @@
     --border: 210, 60%, 80%; /* Slightly darker than secondary color */
     --input: 210, 60%, 80%; /* Same as border */
     --ring: 209, 58%, 35%; /* Darker version of primary color */
-    --link: 209, 58%, 41%; /* Same as primary brand color */
+    --link: 209, 58%, 41%; /* Primary brand color */
     --link-hover: 209, 58%, 31%; /* Darker shade for hover state */
     --radius: 0.5rem;
   }
@@ -54,26 +54,26 @@
   /*creative dark theme*/
   .dark {
     --background: 210, 60%, 10%; /* Darker shade of secondary color */
-    --foreground: 209, 58%, 80%; /* Lighter shade of primary color */
+    --foreground: 209, 58%, 90%; /* Lighter shade of primary color for better contrast */
     --card: 210, 60%, 20%; /* Slightly lighter than background */
-    --card-foreground: 209, 58%, 70%; /* Slightly darker than foreground */
+    --card-foreground: 209, 58%, 70%; /* Darker than previous version for better contrast */
     --popover: 210, 60%, 15%; /* Between background and card */
-    --popover-foreground: 209, 58%, 75%; /* Between foreground and card-foreground */
-    --primary: 209, 58%, 41%; /* Primary brand color */
-    --primary-foreground: 210, 60%, 60%; /* Mid-tone based on primary color */
-    --secondary: 210, 60%, 79%; /* Secondary brand color */
-    --secondary-foreground: 209, 58%, 55%; /* Mid-tone based on secondary color */
+    --popover-foreground: 209, 58%, 85%; /* Between foreground and card-foreground */
+    --primary: 209, 58%, 61%; /* Lighter shade of primary color for better contrast */
+    --primary-foreground: 210, 60%, 40%; /* Darker version of primary color */
+    --secondary: 210, 60%, 30%; /* Darker version than previous for better contrast */
+    --secondary-foreground: 209, 58%, 70%; /* Lighter version of primary color */
     --muted: 210, 60%, 25%; /* Muted version of secondary color */
-    --muted-foreground: 209, 58%, 65%; /* Muted version of primary color */
-    --accent: 210, 60%, 30%; /* Accent color, darker than secondary */
+    --muted-foreground: 209, 58%, 70%; /* Muted version of primary color */
+    --accent: 210, 60%, 50%; /* Accent color, darker than secondary */
     --accent-foreground: 209, 58%, 60%; /* Accent foreground, lighter than primary */
     --destructive: 0, 84.2%, 40.2%; /* Darker version of the specific color */
     --destructive-foreground: 210, 60%, 60%; /* Lighter version of primary color */
     --border: 210, 60%, 30%; /* Slightly lighter than secondary color */
     --input: 210, 60%, 30%; /* Same as border */
-    --ring: 209, 58%, 65%; /* Lighter version of primary color */
-    --link: 209, 58%, 61%; /* Lighter shade of primary brand color for better contrast on dark background */
-    --link-hover: 209, 58%, 71%; /* Even lighter shade for hover state */
+    --ring: 209, 58%, 70%; /* Lighter version of primary color */
+    --link: 209, 58%, 41%; /* Primary brand color */
+    --link-hover: 209, 58%, 31%; /* Darker shade for hover state */
     --radius: 0.5rem; /* Unchanged, as it's not a color */
   }
   /* original dark theme */

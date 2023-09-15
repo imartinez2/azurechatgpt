@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { User } from 'lucide-react'; // import the User icon
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,13 +21,17 @@ const UserProfile = () => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <div className="flex flex-col items-stretch">
-          <Button variant="link" className="relative gap-2 p-0 justify-start">
-            <Avatar className="">
-              <AvatarImage
-                src={session?.user?.image!}
-                alt={session?.user?.name!}
-              />
-            </Avatar>
+          <Button variant="link" className="relative gap-2 p-0 justify-start flex items-center justify-center">
+          {session?.user?.image ? (
+              <Avatar className="">
+                <AvatarImage
+                  src={session?.user?.image}
+                  alt={session?.user?.name!}
+                />
+              </Avatar>
+            ) : (
+              <User className="mr-2 h-4 w-4" /> // User icon is shown if session.user.image is null
+            )}
           </Button>
         </div>
       </DropdownMenuTrigger>
