@@ -71,6 +71,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: set-rg
+        run: |
+          az config set defaults.group=rg-martin
+
 
       - name: 🚀 Deploy to Azure Web App
         id: deploy-to-webapp
