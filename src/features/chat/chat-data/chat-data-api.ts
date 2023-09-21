@@ -22,6 +22,8 @@ export const ChatData = async (props: PromptGPTProps) => {
   );
 
   const chatModel = new ChatOpenAI({
+	modelName: chatThread.model,
+	azureOpenAIApiDeploymentName: chatThread.model.replace(".", ""),
     temperature: transformConversationStyleToTemperature(
       chatThread.conversationStyle
     ),
@@ -46,7 +48,7 @@ export const ChatData = async (props: PromptGPTProps) => {
   const userId = await userHashedId();
 
   const memory = new BufferWindowMemory({
-    k: 100,
+    k: 10,
     returnMessages: true,
     memoryKey: "history",
     chatHistory: new CosmosDBChatMessageHistory({

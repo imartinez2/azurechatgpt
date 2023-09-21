@@ -25,6 +25,8 @@ export const ChatSimple = async (props: PromptGPTProps) => {
   const userId = await userHashedId();
 
   const chat = new ChatOpenAI({
+	modelName: chatThread.model,
+	azureOpenAIApiDeploymentName: chatThread.model,
     temperature: transformConversationStyleToTemperature(
       chatThread.conversationStyle
     ),

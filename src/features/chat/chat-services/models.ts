@@ -19,8 +19,8 @@ export interface ChatMessageModel {
 export type ConversationStyle = "creative" | "balanced" | "precise";
 export type ChatType = "simple" | "data" | "mssql";
 
-export const GPT_3_5 = "gpt-3.5" as const;
-export const GPT_4 = "gpt-4" as const;
+export const GPT_3_5 = "gpt-3.5-turbo-16k" as const;
+export const GPT_4 = "gpt-4-32k" as const;
 
 export type LLMModel = typeof GPT_3_5 | typeof GPT_4;
 
