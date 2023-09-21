@@ -1,0 +1,3 @@
+.fix-scroll-bar {
+	width: calc(100% - 17px) !important;
+}
