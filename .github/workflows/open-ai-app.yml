@@ -81,7 +81,8 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ secrets.AZURE_APP_SERVICE_NAME }}
-          package: ${{ github.workspace }}/Nextjs-site.zip
+          package: ./site-deploy/Nextjs-site.zip
+          #package: ${{ github.workspace }}/Nextjs-site.zip
 
       - name: 🧹 Cleanup
         run: rm ${{ github.workspace }}/Nextjs-site.zip
