@@ -4,6 +4,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { FC } from "react";
 import { AI_NAME } from "../theme/customise";
 import { FindAllChatsInThread, FindChatThreadByID } from "./reporting-service";
+import { GPT_3_5, GPT_4 } from "../chat/chat-services/models";
 
 interface Props {
   chatId: string;
@@ -20,10 +21,10 @@ export const ChatReportingUI: FC<Props> = async (props) => {
         <div className="flex justify-center p-4">
           <Tabs defaultValue={chatThread.model}>
             <TabsList className="grid w-full grid-cols-2 h-12 items-stretch">
-              <TabsTrigger disabled={true} value="GPT-3.5">
+              <TabsTrigger disabled={true} value={GPT_3_5}>
                 ⚡ GPT-3.5
               </TabsTrigger>
-              <TabsTrigger disabled={true} value="GPT-4">
+              <TabsTrigger disabled={true} value={GPT_4}>
                 ✨ GPT-4
               </TabsTrigger>
             </TabsList>
@@ -32,7 +33,7 @@ export const ChatReportingUI: FC<Props> = async (props) => {
         <div className=" pb-[80px] ">
           {chats.map((message, index) => (
             <ChatRow
-              name={message.role === "user" ? chatThread.useName : AI_NAME}
+              name={message.role === "user" ? chatThread.userName : AI_NAME}
               profilePicture={message.role === "user" ? "" : "/ai-icon.png"}
               message={message.content}
               type={message.role}

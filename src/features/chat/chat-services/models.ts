@@ -22,6 +22,8 @@ export type ChatType = "simple" | "data" | "mssql";
 export const GPT_3_5 = "gpt-3.5-turbo-16k" as const;
 export const GPT_4 = "gpt-4-32k" as const;
 
+export const NEW_CHAT_DEFAULT_NAME = "New Chat" as const;
+
 export type LLMModel = typeof GPT_3_5 | typeof GPT_4;
 
 export type ChatRole = "system" | "user" | "assistant" | "function";
@@ -32,7 +34,7 @@ export interface ChatThreadModel {
   model: LLMModel;
   createdAt: Date;
   userId: string;
-  useName: string;
+  userName: string;
   isDeleted: boolean;
   chatType: ChatType;
   conversationStyle: ConversationStyle;

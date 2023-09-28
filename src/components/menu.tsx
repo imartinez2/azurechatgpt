@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Menu = React.forwardRef<
   HTMLDivElement,
@@ -39,24 +40,34 @@ const MenuContent = React.forwardRef<
 ));
 MenuContent.displayName = "MenuContent";
 
-interface MenuItemProps extends React.HTMLAttributes<HTMLLinkElement> {
+interface MenuItemProps extends React.HTMLAttributes<Element> {
   href: string;
   isSelected?: boolean;
 }
 
 const MenuItem: React.FC<MenuItemProps> = (props) => {
-  return (
-    <Link
-      className={cn(
-        props.className,
-        "items-center text-sm font-medium flex gap-2 p-2 py-1 rounded-md hover:bg-secondary",
-        props.isSelected && "bg-secondary text-primary"
-      )}
-      href={props.href}
-    >
-      {props.children}
-    </Link>
-  );
+	const router = useRouter();
+
+	const handleClick = (e: React.MouseEvent) => {
+		e.preventDefault();
+		router.push(props.href);
+		if (props.onClick) {
+			props.onClick(e);
+		}
+	};
+
+	return (
+		<div
+			className={cn(
+				props.className,
+				"items-center text-sm font-medium flex gap-2 p-2 py-1 rounded-md hover:bg-secondary",
+				props.isSelected && "bg-secondary text-primary"
+			)}
+			onClick={handleClick}
+		>
+			{props.children}
+		</div>
+	);
 };
 
 const MenuFooter = React.forwardRef<
