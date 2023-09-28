@@ -60,7 +60,7 @@ export const Reporting = async (props: ReportingProp) => {
                           {chatThread.id}
                         </Link>
                       </TableCell>
-                      <TableCell>{chatThread.useName}</TableCell>
+                      <TableCell>{chatThread.userName}</TableCell>
                       <TableCell>{chatThread.name}</TableCell>
                       <TableCell>
                         {new Date(chatThread.createdAt).toLocaleDateString()}
