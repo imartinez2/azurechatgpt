@@ -1,9 +1,13 @@
+"use client"
+
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { BarChartHorizontalBig } from "lucide-react";
 import Link from "next/link";
 import { UserProfile } from "../user-profile";
+import { useTheme } from "next-themes";
 
 export const MainMenu = () => {
+  const {theme, setTheme} = useTheme();
   return (
     <div className="flex gap-2 flex-col justify-between">
       <div className="flex gap-2 flex-col justify-between">
@@ -13,7 +17,7 @@ export const MainMenu = () => {
           title="Home"
         >
           <Avatar className="">
-            <AvatarImage src="/ai-icon.png" />
+            <AvatarImage avatarImageSource={(theme == "dark") ? "/CreativeGPTlogo-light.png" : "/CreativeGPTlogo-dark.png"} />
           </Avatar>
         </Link>
         <Link

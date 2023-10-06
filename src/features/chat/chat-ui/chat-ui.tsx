@@ -23,6 +23,8 @@ import {
 import { transformCosmosToAIModel } from "../chat-services/utils";
 import { EmptyState } from "./chat-empty-state";
 import { ChatHeader } from "./chat-header";
+import {useTheme} from "next-themes";
+
 
 interface Prop {
   chats: Array<ChatMessageModel>;
@@ -30,6 +32,7 @@ interface Prop {
 }
 
 export const ChatUI: FC<Prop> = (props) => {
+  const { theme, setTheme } = useTheme();
   const { id, chatType, conversationStyle, model } = props.chatThread;
 
   const { data: session } = useSession();
@@ -127,7 +130,7 @@ export const ChatUI: FC<Prop> = (props) => {
           <ChatRow
             name={message.role === "user" ? session?.user?.name! : AI_NAME}
             profilePicture={
-              message.role === "user" ? session?.user?.image! : "/ai-icon.png"
+              message.role === "user" ? session?.user?.image! : (theme == "dark") ? "/CreativeGPTlogo-light.png" : "/CreativeGPTlogo-dark.png"
             }
             message={message.content}
             type={message.role}
