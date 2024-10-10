@@ -1,78 +1,41 @@
+
 param name string
-param resourceToken string
 
-param openai_api_key string
-param openai_instance_name string
-param openai_deployment_name string
-param openai_api_version string
+param openaiApiKey string
 
-var location = resourceGroup().location
+param openaiName string
 
-resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
-  name: '${name}-app-${resourceToken}'
-  location: location
-  properties: {
-    reserved: true
-  }
-  sku: {
-    name: 'P0v3'
-    tier: 'Premium0V3'
-    size: 'P0v3'
-    family: 'Pv3'
-    capacity: 1
-  }
-  kind: 'linux'
+param openaiDeploymentName string
+
+param openaiApiVersion string
+
+param location string = resourceGroup().location
+
+param serverFarmSKU object = {
+  name: 'P1v3'
+  tier: 'Premium1V3'
+  size: 'P1v3'
+  family: 'Pv3'
+  capacity: 1
 }
 
-resource webApp 'Microsoft.Web/sites@2020-06-01' = {
-  name: '${name}-app-${resourceToken}'
-  location: location
-  properties: {
-    serverFarmId: appServicePlan.id
-    siteConfig: {
-      linuxFxVersion: 'node|18-lts'
-      alwaysOn: true
-      appCommandLine: 'node server.js'
-      appSettings: [
-        {
-          name: 'AZURE_COSMOSDB_URI'
-          value: cosmosDbAccount.properties.documentEndpoint
-        }
-        {
-          name: 'AZURE_COSMOSDB_KEY'
-          value: cosmosDbAccount.listKeys().primaryMasterKey
-        }
-        {
-          name: 'AZURE_OPENAI_API_KEY'
-          value: openai_api_key
-        }
-        {
-          name: 'AZURE_OPENAI_API_INSTANCE_NAME'
-          value: openai_instance_name
-        }
-        {
-          name: 'AZURE_OPENAI_API_DEPLOYMENT_NAME'
-          value: openai_deployment_name
-        }
-        {
-          name: 'AZURE_OPENAI_API_VERSION'
-          value: openai_api_version
-        }
-        {
-          name: 'NEXTAUTH_SECRET'
-          value: '${name}app${resourceToken}'
-        }
-        {
-          name: 'NEXTAUTH_URL'
-          value: 'https://${name}-app-${resourceToken}.azurewebsites.net'
-        }
-      ]
-    }
-  }
-}
+param serverFarmKind string = 'linux'
 
-resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
-  name: '${name}-cosmos-${resourceToken}'
+param siteLinuxFxVersion string = 'node|18-lts'
+
+param siteAlwaysOn bool = true
+
+param siteAppCommandLine string = 'node server.js'
+
+param azureAdTenantId string
+
+@secure()
+param azureAdClientSecret string
+
+param azureAdClientId string
+
+resource name_cosmos_resourceToken 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
+  name: '${name}-cosmosdb'
   location: location
   kind: 'GlobalDocumentDB'
   properties: {
@@ -83,5 +46,66 @@ resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
         failoverPriority: 0
       }
     ]
+  }
+}
+
+resource name_app_resourceToken 'Microsoft.Web/serverfarms@2020-06-01' = {
+  name: '${name}-app-plan'
+  location: location
+  properties: {
+    reserved: true
+  }
+  sku: serverFarmSKU
+  kind: serverFarmKind
+}
+
+resource Microsoft_Web_sites_name_app_resourceToken 'Microsoft.Web/sites@2020-06-01' = {
+  name: '${name}-app'
+  location: location
+  properties: {
+    serverFarmId: name_app_resourceToken.id
+    siteConfig: {
+      linuxFxVersion: siteLinuxFxVersion
+      alwaysOn: siteAlwaysOn
+      appCommandLine: siteAppCommandLine
+      appSettings: [
+        {
+          name: 'AZURE_OPENAI_API_KEY'
+          value: openaiApiKey
+        }
+        {
+          name: 'AZURE_OPENAI_API_INSTANCE_NAME'
+          value: openaiName
+        }
+        {
+          name: 'AZURE_OPENAI_API_DEPLOYMENT_NAME'
+          value: openaiDeploymentName
+        }
+        {
+          name: 'AZURE_OPENAI_API_VERSION'
+          value: openaiApiVersion
+        }
+        {
+          name: 'AZURE_COSMOSDB_URI'
+          value: name_cosmos_resourceToken.properties.documentEndpoint
+        }
+        {
+          name: 'AZURE_COSMOSDB_KEY'
+          value: name_cosmos_resourceToken.listKeys().primaryMasterKey
+        }
+        {
+          name: 'AZURE_AD_CLIENT_ID'
+          value: azureAdClientId
+        }
+        {
+          name: 'AZURE_AD_CLIENT_SECRET'
+          value: azureAdClientSecret
+        }
+        {
+          name: 'AZURE_AD_TENANT_ID'
+          value: azureAdTenantId
+        }
+      ]
+    }
   }
 }

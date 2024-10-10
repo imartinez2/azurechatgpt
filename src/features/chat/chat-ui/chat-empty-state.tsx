@@ -38,17 +38,17 @@ export const EmptyState: FC<Prop> = (props) => {
   };
 
   return (
-    <div className="grid grid-cols-5 w-full items-center container mx-auto max-w-3xl justify-center h-full gap-9">
-      <div className="col-span-2 gap-5 flex flex-col flex-1">
+    <div className="grid grid-cols-5 w-full items-center container mx-auto max-w-3xl justify-center h-5/6 md:h-full gap-9 auto-rows-min lg:auto-rows-auto p-4">
+      <div className="col-span-5 lg:col-span-2 gap-5 flex flex-col lg:flex-1">
         <Typography variant="h4" className="text-primary">
           Hello!
         </Typography>
         <p className="">
           Start by just typing your message in the box below. You can also
-          personalise the chat by making changes to the settings on the right.
+          personalise the chat by making changes to the settings.
         </p>
       </div>
-      <Card className="col-span-3 flex flex-col gap-5 p-5 ">
+      <Card className="col-span-5 lg:col-span-3 gap-5 p-5 flex flex-col">
         <Typography variant="h4" className="text-primary">
           Personalise
         </Typography>

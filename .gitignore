@@ -30,3 +30,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+infra/*.parameters.json
+infra/*.parameters.json*
+site-deploy/
+
+# Exclude all files under .scratchpad but leave the folder itself
+.[Ss]cratch[Pp]ad/*
+!.[Ss]cratch[Pp]ad/.gitkeep

@@ -10,24 +10,41 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
+import { useEffect } from "react";
+import { userSession } from "@/features/auth/helpers";
 
 export const LogIn = () => {
+  useEffect(() => {
+    const testLogin = async () => {
+      try {
+        let session = await userSession();
+        console.log("session", session);
+      } catch (error) {
+        signIn("azure-ad");
+      }
+    };
+    testLogin();
+  }, []);
+
   return (
     <Card className="flex gap-2 flex-col min-w-[300px]">
       <CardHeader className="gap-2">
         <CardTitle className="text-2xl flex gap-2">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={"ai-icon.png"} />
+            <AvatarImage src={"ai-avatar.417.png"} />
           </Avatar>
           <span className="text-primary">{AI_NAME}</span>
         </CardTitle>
         <CardDescription>
-          Login in with your GitHub or Microsoft 365 account
+          <p>Automatically logging you in.</p>
+          <p>
+            If this screen is visible for an extended period of time you can try
+            to manually login in with your Netchex account.
+          </p>
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <Button onClick={() => signIn("github")}>GitHub</Button>
-        <Button onClick={() => signIn("azure-ad")}> Microsoft 365</Button>
+        <Button onClick={() => signIn("azure-ad")}>Log In</Button>
       </CardContent>
     </Card>
   );

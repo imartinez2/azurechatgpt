@@ -1,6 +1,6 @@
 "use client";
 
-import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { LogOut } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import { signOut, useSession } from "next-auth/react";
 
 const UserProfile = () => {
@@ -26,6 +26,9 @@ const UserProfile = () => {
                 src={session?.user?.image!}
                 alt={session?.user?.name!}
               />
+              <AvatarFallback>
+                <User />
+              </AvatarFallback>
             </Avatar>
           </Button>
         </div>

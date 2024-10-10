@@ -15,7 +15,7 @@ export const ChatMenu = async () => {
       <MenuContent>
         <MenuItems menuItems={items} />
       </MenuContent>
-      <MenuFooter>
+      <MenuFooter className="invisible h-0 md:visible md:h-auto">
         <div className="flex flex-col gap-3">
           <ThemeToggle />
         </div>

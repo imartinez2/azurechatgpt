@@ -114,20 +114,20 @@ export const ChatUI: FC<Prop> = (props) => {
   };
 
   const ChatWindow = (
-    <div className=" h-full rounded-md overflow-y-auto" ref={scrollRef}>
-      <div className="flex justify-center p-4">
+    <div className="h-full rounded-md overflow-y-auto" ref={scrollRef}>
+      <div className="flex justify-end p-4">
         <ChatHeader
           chatType={chatBody.chatType}
           conversationStyle={chatBody.conversationStyle}
           llmModel={chatBody.model}
         />
       </div>
-      <div className=" pb-[80px] ">
+      <div className="pb-[80px]">
         {messages.map((message, index) => (
           <ChatRow
             name={message.role === "user" ? session?.user?.name! : AI_NAME}
             profilePicture={
-              message.role === "user" ? session?.user?.image! : "/ai-icon.png"
+              message.role === "user" ? session?.user?.image! : "/ai-avatar.417.png"
             }
             message={message.content}
             type={message.role}
@@ -140,7 +140,7 @@ export const ChatUI: FC<Prop> = (props) => {
   );
 
   return (
-    <Card className="h-full relative overflow-hidden">
+    <Card className="h-full relative lg:overflow-hidden">
       {messages.length !== 0 ? (
         ChatWindow
       ) : (

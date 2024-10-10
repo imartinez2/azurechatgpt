@@ -20,10 +20,10 @@ export const ChatReportingUI: FC<Props> = async (props) => {
         <div className="flex justify-center p-4">
           <Tabs defaultValue={chatThread.model}>
             <TabsList className="grid w-full grid-cols-2 h-12 items-stretch">
-              <TabsTrigger disabled={true} value="GPT-3.5">
+              <TabsTrigger disabled={true} value="gpt-3.5">
                 ⚡ GPT-3.5
               </TabsTrigger>
-              <TabsTrigger disabled={true} value="GPT-4">
+              <TabsTrigger disabled={true} value="gpt-4">
                 ✨ GPT-4
               </TabsTrigger>
             </TabsList>

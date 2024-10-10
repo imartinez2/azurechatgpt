@@ -1,2 +1,1 @@
-export const AI_NAME = "ChatGPT on Azure solution accelerator";
-
+export const AI_NAME = "Netchex ChatGPT";

@@ -162,7 +162,7 @@ export const CreateChatThread = async () => {
     isDeleted: false,
     chatType: "simple",
     model: "gpt-3.5",
-    conversationStyle: "precise",
+    conversationStyle: "balanced",
     type: CHAT_THREAD_ATTRIBUTE,
   };
 

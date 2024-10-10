@@ -21,6 +21,7 @@ const azureEnvVars = [
   "NEXTAUTH_URL",
   "AZURE_DOCUMENT_INTELLIGENCE_ENDPOINT",
   "AZURE_DOCUMENT_INTELLIGENCE_KEY",
+  "APPLICATIONINSIGHTS_CONNECTION_STRING"
 ] as const;
 
 type RequiredServerEnvKeys = (typeof azureEnvVars)[number];
